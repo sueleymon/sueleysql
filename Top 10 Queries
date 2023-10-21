@@ -1,0 +1,23 @@
+Here are some SQL queries that display Top 10 values:
+
+SELECT A.customer_id, B.first_name, B.last_name,E.country, D.city, SUM(A.amount) AS total_amount_spent
+FROM payment A
+	INNER JOIN customer B ON A.customer_id = B.customer_id
+	INNER JOIN address C ON B.address_id = C.address_id
+	INNER JOIN city D ON C.city_id = D.city_id
+	INNER JOIN country E ON D.country_ID = E.country_ID
+GROUP BY A.customer_id, first_name, last_name, country, city
+ORDER BY total_amount_spent DESC
+LIMIT 10;
+
+SELECT E.country, COUNT(DISTINCT B.customer_id) as number_of_customers, SUM(A.amount) AS revenue 
+FROM payment A
+	INNER JOIN customer B ON A.customer_id = B.customer_id
+	INNER JOIN address C ON B.address_id = C.address_id
+	INNER JOIN city D ON C.city_id = D.city_id
+	INNER JOIN country E ON D.country_id = E.country_id
+GROUP BY E.country
+ORDER BY revenue DESC
+LIMIT 10;
+
+
