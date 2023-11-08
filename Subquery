@@ -37,4 +37,4 @@ LEFT JOIN
 	LIMIT 5
 ) AS top_5_customers ON A.customer_id = top_5_customers.customer_id
 GROUP BY D.country
-ORDER BY top_customers_count DESC
+ORDER BY all_customers_count DESC
